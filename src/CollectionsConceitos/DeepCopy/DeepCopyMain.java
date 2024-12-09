@@ -67,9 +67,14 @@ public class DeepCopyMain {
             salaSI.add(salaIterator.next().clone());
         }
 
+        salaCC.remove(estudanteCC);
+
         System.out.printf("Sala CC -> %s\n", salaCC);
         System.out.printf("Sala SI -> %s\n", salaSI);
+        System.out.println(salaCC.equals(salaSI));
         System.out.println(salaCC.get(0).getCurso().equals(salaSI.get(0).getCurso()));
+
+
 
 
     }
