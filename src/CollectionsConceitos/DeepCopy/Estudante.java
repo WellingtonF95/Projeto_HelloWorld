@@ -1,6 +1,7 @@
 package CollectionsConceitos.DeepCopy;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Estudante implements Cloneable, Serializable {
 
@@ -18,7 +19,7 @@ public class Estudante implements Cloneable, Serializable {
     }
 
     //Utilizando uma nova instancia de curso ao invocar o construtor de Estudante
-    public Estudante(Estudante estudante) {
+    protected Estudante(Estudante estudante) {
         this.id = estudante.getId();
         this.nome = estudante.getNome();
         this.curso = new Curso(estudante.getCurso().getId(), estudante.getCurso().getNome());
@@ -70,4 +71,16 @@ public class Estudante implements Cloneable, Serializable {
         return estudante;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Estudante estudante = (Estudante) o;
+        return Objects.equals(nome, estudante.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nome);
+    }
 }
