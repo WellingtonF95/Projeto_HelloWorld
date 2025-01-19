@@ -30,6 +30,7 @@ public class Curso implements Cloneable, Serializable {
         this.nome = nome;
     }
 
+    //Utilizando a interface Cloneable
     @Override
     public Curso clone() {
         Curso curso;
@@ -48,9 +49,5 @@ public class Curso implements Cloneable, Serializable {
                 ", cursoNome='" + nome + '\'' +
                 '}';
     }
-
-   /* public Curso deepCopy() {
-        return new Curso(this.id, this.nome);
-    }*/
 
 }

@@ -17,6 +17,13 @@ public class Estudante implements Cloneable, Serializable {
         this.curso = curso;
     }
 
+    //Utilizando uma nova instancia de curso ao invocar o construtor de Estudante
+    public Estudante(Estudante estudante) {
+        this.id = estudante.getId();
+        this.nome = estudante.getNome();
+        this.curso = new Curso(estudante.getCurso().getId(), estudante.getCurso().getNome());
+    }
+
     public Integer getId() {
         return id;
     }
@@ -50,6 +57,7 @@ public class Estudante implements Cloneable, Serializable {
                 '}';
     }
 
+    //Utilizando a interface Cloneable
     @Override
     public Estudante clone() {
         Estudante estudante;
@@ -61,10 +69,5 @@ public class Estudante implements Cloneable, Serializable {
         estudante.setCurso(this.getCurso().clone());
         return estudante;
     }
-
-
-   /* public Estudante deepCopy() {
-        return new Estudante(this.id, this.nome, this.curso.deepCopy());
-    }*/
 
 }
