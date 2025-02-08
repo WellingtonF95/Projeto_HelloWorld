@@ -73,6 +73,7 @@ public class Estudante implements Cloneable, Serializable {
 
     @Override
     public boolean equals(Object o) {
+        System.out.printf("%s = %s\n", this.getNome(), ((Estudante) o).getNome()); //para fins de estudo
         if (o == null || getClass() != o.getClass()) return false;
 
         Estudante estudante = (Estudante) o;
@@ -81,6 +82,7 @@ public class Estudante implements Cloneable, Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(nome);
+        return nome.charAt(0); // <- para fins de estudo
+        //return Objects.hashCode(nome); <- implementação correta
     }
 }

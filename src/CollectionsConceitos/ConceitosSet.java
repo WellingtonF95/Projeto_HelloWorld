@@ -31,16 +31,46 @@ public class ConceitosSet {
             System.out.println(nome);
         }
 
-        Estudante estudante1 = new Estudante(123,"Wellinton",new Curso(1, "Ciencia da Computação"));
-        Estudante estudante11 = new Estudante(123,"Wellington",new Curso(1, "Ciencia da Computação"));
-        Estudante estudante2 = new Estudante(123,"Willian",new Curso(1, "Ciencia da Computação"));
-        Estudante estudante3 = new Estudante(123,"Thais",new Curso(2, "Sistema de Informação"));
+        Estudante estudante1 = new Estudante(123,"Wellington",new Curso(1, "Ciencia da Computação"));
+        Estudante estudante2 = new Estudante(123,"Wellington",new Curso(1, "Ciencia da Computação"));
+        Estudante estudante3 = new Estudante(123,"Willian",new Curso(1, "Ciencia da Computação"));
+        Estudante estudante4 = new Estudante(123,"Thais",new Curso(2, "Sistema de Informação"));
 
-        System.out.println(estudante1.equals(estudante11));
-        System.out.println(estudante1.hashCode() == estudante11.hashCode());
+        /*Retomando: o equals e hashCode tem que ter o mesmo resultado:
+        para objetos iguais - o equals retorna true, o hashCode tem que retornar true
+        para objetos diferentes - o equals retorna false, não necessáriamente o hashCode tem que retornar false. (Isso depende da implementação do metodo hashCode)
+        O ideal seria retornar códigos hashes diferentes para objetos diferentes, para que a tabela de espelhamento tenha efetividade e "espalhe" mais os objetos nela
+        O ideal para que a tabela de espalhamento tenha uma boa performance é usar algoritmos eficientes nessa geração. O recomendado é usar a implementação da própria IDE
+        */
+
+        System.out.println(estudante1.equals(estudante2));
+        System.out.println(estudante1.hashCode() == estudante2.hashCode());
+        System.out.println(estudante1.hashCode());
         System.out.println(estudante2.hashCode());
         System.out.println(estudante3.hashCode());
+        System.out.println(estudante4.hashCode());
 
+        /*Ao utilizar o Set, para cada elemento adicionado ao conjunto, o metodo equals é invocado. Isso se dá pelo fato do Set não aceitar duplicatas,
+        * por isso sempre haverá essa verificação antes de adicionar os elementos ao conjunto Set.
+        * */
+
+        Set<Estudante> estudantes = new HashSet<>();
+
+        System.out.println("---");
+        estudantes.add(estudante1);
+        estudantes.add(estudante2);
+        estudantes.add(estudante3);
+        estudantes.add(estudante4);
+        System.out.println("---");
+        estudantes.add(new Estudante(123, "Wallace", new Curso()));
+        System.out.println("---");
+        estudantes.add(new Estudante(123, "Tatiana", new Curso()));
+
+        System.out.println(estudantes);
+
+        //Ao verificar se a lista de estudante contem a estudante Tatiana, é feita a verificação na tabela de espalhamento se a Tatiana já foi
+        //adicionada no conjunto (Para uma implementação do hashCode gerando o hash a partir da primeira letra do nome).
+        System.out.println(estudantes.contains(new Estudante(123, "Thales", new Curso())));
 
 
     }
