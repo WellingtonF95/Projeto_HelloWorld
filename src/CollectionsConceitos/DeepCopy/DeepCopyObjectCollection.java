@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import CollectionsConceitos.Model.Curso;
+import CollectionsConceitos.Model.Estudante;
 import org.apache.commons.lang3.SerializationUtils;
 
 public class DeepCopyObjectCollection {

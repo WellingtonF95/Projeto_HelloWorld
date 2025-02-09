@@ -1,5 +1,8 @@
 package CollectionsConceitos.DeepCopy;
 
+import CollectionsConceitos.Model.Curso;
+import CollectionsConceitos.Model.Estudante;
+
 import java.util.ArrayList;
 import java.util.List;
 

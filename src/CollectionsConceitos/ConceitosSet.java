@@ -1,7 +1,7 @@
 package CollectionsConceitos;
 
-import CollectionsConceitos.DeepCopy.Curso;
-import CollectionsConceitos.DeepCopy.Estudante;
+import CollectionsConceitos.Model.Curso;
+import CollectionsConceitos.Model.Estudante;
 
 import java.util.HashSet;
 import java.util.Iterator;
