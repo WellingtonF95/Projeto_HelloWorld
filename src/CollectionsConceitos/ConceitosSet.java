@@ -14,6 +14,7 @@ public class ConceitosSet {
         //A principal caracteristica dos Conjuntos (Set) é que ele não permite duplicatas. Ele não possuí
         //indices como as listas possui. Mas ele se torna mais performatico pois ele utiliza a tabela de espelhamento
         //(Hash Tables)
+        //Para a implementação do HashSet, não é garantida a ordem dos elementos
 
         Set<String> nomes = new HashSet<>();
         System.out.println(nomes.add("Wellington"));
