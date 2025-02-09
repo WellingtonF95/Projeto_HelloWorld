@@ -1,9 +1,9 @@
-package CollectionsConceitos.DeepCopy;
+package CollectionsConceitos.Model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Estudante implements Cloneable, Serializable {
+public class Estudante implements Cloneable, Serializable, Comparable<Estudante> {
 
     private Integer id;
     private String nome;
@@ -73,7 +73,7 @@ public class Estudante implements Cloneable, Serializable {
 
     @Override
     public boolean equals(Object o) {
-        System.out.printf("%s = %s\n", this.getNome(), ((Estudante) o).getNome()); //para fins de estudo
+        System.out.printf("%s = %s\n", this.getNome(), ((Estudante) o).getNome()); //para fins de estudo e debug
         if (o == null || getClass() != o.getClass()) return false;
 
         Estudante estudante = (Estudante) o;
@@ -82,7 +82,12 @@ public class Estudante implements Cloneable, Serializable {
 
     @Override
     public int hashCode() {
-        return nome.charAt(0); // <- para fins de estudo
+        return nome.charAt(0); // <- para fins de estudo e debug
         //return Objects.hashCode(nome); <- implementação correta
+    }
+
+    @Override
+    public int compareTo(Estudante o) {
+        return this.getNome().compareTo(o.getNome());
     }
 }

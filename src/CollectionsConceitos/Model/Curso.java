@@ -1,4 +1,4 @@
-package CollectionsConceitos.DeepCopy;
+package CollectionsConceitos.Model;
 
 import java.io.Serializable;
 
