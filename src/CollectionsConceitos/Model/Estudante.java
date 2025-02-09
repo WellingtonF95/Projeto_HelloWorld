@@ -19,7 +19,7 @@ public class Estudante implements Cloneable, Serializable, Comparable<Estudante>
     }
 
     //Utilizando uma nova instancia de curso ao invocar o construtor de Estudante
-    protected Estudante(Estudante estudante) {
+    public Estudante(Estudante estudante) {
         this.id = estudante.getId();
         this.nome = estudante.getNome();
         this.curso = new Curso(estudante.getCurso().getId(), estudante.getCurso().getNome());
