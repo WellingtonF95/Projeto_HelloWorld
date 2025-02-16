@@ -12,6 +12,11 @@ public class Estudante implements Cloneable, Serializable, Comparable<Estudante>
     public Estudante() {
     }
 
+    public Estudante(Integer id, String nome) {
+        this.setId(id);
+        this.setNome(nome);
+    }
+
     public Estudante(Integer id, String nome, Curso curso) {
         this.id = id;
         this.nome = nome;
