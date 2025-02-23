@@ -92,6 +92,24 @@ public class ConceitosMapas {
                 Objects.nonNull(entry.getValue()) ? entry.getValue().getNome() : "Nenhum Curso"
                 )
         );
+
+        //Metodo size: verifica a quantidade de items do mapa
+        System.out.printf("Quantidade de alunos na classe: %s alunos\n", classe.size());
+
+        //Metodo isEmpty: verifica se o mapa está vazio
+        System.out.printf("A classe está vazia? %s\n", classe.isEmpty());
+
+        //Metodo containsKey: verifica se a chave existe dentro do mapa
+        System.out.printf("Aluno Wellington está na classe? %s\n", classe.containsKey(new Estudante(111, "Wellington")));
+
+        //Metodo containsValue: verifica se o valor existe dentro do mapa
+        System.out.printf("Existe o curso de Engenharia da Computação? %s\n", classe.containsValue(ec));
+
+        //Metodo replace: substitui valor de uma chave para outro valor
+        //classe.replace(wellington, ads);
+
+        //Substitui um valor antigo para um valor novo
+        //classe.replace(wellington, ec, null);
     }
 
 }
