@@ -23,7 +23,11 @@ public class ProdutoMain {
             efetuarBaixaEstoque(produto, quantidade);
             System.out.println("Compra realizada");
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             System.out.printf("Não foi possivel concluir a compra: %s\n", e.getMessage());
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            System.out.printf("Erro ao efetuar a compra: %s", e.getMessage());
         }
     }
 
