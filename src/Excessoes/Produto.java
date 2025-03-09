@@ -2,6 +2,9 @@ package Excessoes;
 
 import java.util.Objects;
 
+import Excessoes.exceptions.ProdutoInativoException;
+import Excessoes.exceptions.ProdutoSemEstoqueException;
+
 public class Produto {
 
     private String nome;
@@ -33,8 +36,8 @@ public class Produto {
         return !isAtivo();
     }
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public void ativar() {
+        this.ativo = true;
     }
 
     public void adicionarEstoque(int quantidade) {
@@ -45,17 +48,28 @@ public class Produto {
         this.quantidadeEstoque += quantidade;
     }
 
-    public void removerEstoque(int quantidade) {
+    /* Para checked exceptions, há duas possíbilidades de lidar com essas excessões:
+    * - Tratar em um bloco try/catch;
+    * - Propagar a excessão para o metodo anterior da pilha de chamadas (stackTrace)
+    *
+    * Boas praticas:
+    * - Sempre lançar excessões o mais cedo possível;
+    * - Sempre tratar excessões o mais tarde possível;
+    * - Usar excessões especificas para tratar casos especificos e facilitar o troubleshooting
+    *
+    * */
+
+    public void removerEstoque(int quantidade) throws ProdutoSemEstoqueException, ProdutoInativoException {
         if (quantidade < 0) {
             throw new IllegalArgumentException("Quantidade não pode ser negativa");
         }
 
         if (this.quantidadeEstoque - quantidade < 0) {
-            throw new IllegalStateException("Não foi possível retirar o produto. Quantidade acima do estoque");
+            throw new ProdutoSemEstoqueException("Estoque insuficiente", getQuantidadeEstoque(), quantidade);
         }
 
         if (isInativo()) {
-            throw new IllegalArgumentException("Produto inativo");
+            throw new ProdutoInativoException("O produto está inativo");
         }
 
         this.quantidadeEstoque -= quantidade;
